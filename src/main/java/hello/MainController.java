@@ -29,6 +29,13 @@ public class MainController {
 		userRepository.save(n);
 		return "Saved";
 	}
+	
+	@GetMapping(path="/delete") // Map ONLY GET Requests
+	public @ResponseBody String deleteWithId (@RequestParam int id) {
+		Long lid = new Long(id);
+		userRepository.delete(lid);
+		return "Deleted";
+	}
 
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<User> getAllUsers() {
